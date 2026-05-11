@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A look at our recent leasehold improvements and renovations across Alberta. Real projects, real craftsmanship.">
+  <title>Past Projects | 2266446 Alberta Ltd</title>
+
+  <style>
+    /* ===== GLOBAL RESET & BASE ===== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif; color: #111; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ===== HEADER ===== */
+    .site-header { position: sticky; top: 0; z-index: 100; background: #EAEAEE; border-bottom: 1px solid #d4d4d8; padding: 20px 24px; }
+    .header-inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .site-logo { font-size: 18px; font-weight: 700; color: #111; letter-spacing: -0.01em; }
+    .site-nav { display: flex; gap: 32px; align-items: center; }
+    .site-nav a { font-size: 15px; font-weight: 500; color: #111; transition: opacity 0.2s; }
+    .site-nav a:hover { opacity: 0.6; }
+    .site-nav .nav-cta { background: #111; color: #fff !important; padding: 10px 20px; border-radius: 6px; }
+    .site-nav .nav-cta:hover { background: #333; opacity: 1; }
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .menu-toggle span { display: block; width: 24px; height: 2px; background: #111; margin: 5px 0; transition: 0.3s; }
+    #menu-checkbox { display: none; }
+
+    /* ===== PROJECTS PAGE STYLES ===== */
+    .pp-page * { box-sizing: border-box; }
+    .pp-page a { text-decoration: none; color: inherit; }
+
+    /* HERO */
+    .pp-hero { background: #EAEAEE; padding: 96px 24px 56px 24px; }
+    .pp-hero-inner { max-width: 1280px; margin: 0 auto; }
+    .pp-label { font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; color: #666; margin-bottom: 16px; font-weight: 500; }
+    .pp-hero h1 { font-size: clamp(48px, 6vw, 88px); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin: 0 0 24px 0; max-width: 1000px; color: #111; }
+    .pp-hero p { font-size: 20px; color: #444; max-width: 720px; line-height: 1.5; margin: 0; }
+
+    /* STATS BAR */
+    .pp-stats { background: #111; color: #fff; padding: 48px 24px; }
+    .pp-stats-grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center; }
+    .pp-stats-item h3 { font-size: 36px; font-weight: 700; margin: 0 0 8px 0; letter-spacing: -0.02em; color: #fff; }
+    .pp-stats-item p { font-size: 14px; color: #aaa; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; }
+
+    /* FILTERS (CSS-only radio trick) */
+    .pp-filters-wrap { background: #f5f5f3; padding: 64px 24px 24px 24px; }
+    .pp-filters-inner { max-width: 1280px; margin: 0 auto; }
+    .pp-radio { position: absolute; opacity: 0; pointer-events: none; }
+    .pp-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+    .pp-filter-label { background: #fff; color: #111; border: 1px solid #e5e5e0; padding: 10px 20px; border-radius: 999px; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s; user-select: none; display: inline-block; }
+    .pp-filter-label:hover { border-color: #111; }
+
+    #pp-f-all:checked ~ .pp-page label[for="pp-f-all"],
+    #pp-f-leasehold:checked ~ .pp-page label[for="pp-f-leasehold"],
+    #pp-f-bathroom:checked ~ .pp-page label[for="pp-f-bathroom"],
+    #pp-f-kitchen:checked ~ .pp-page label[for="pp-f-kitchen"],
+    #pp-f-basement:checked ~ .pp-page label[for="pp-f-basement"] {
+      background: #111;
+      color: #fff;
+      border-color: #111;
+    }
+
+    /* GRID */
+    .pp-grid-wrap { background: #f5f5f3; padding: 24px 24px 96px 24px; }
+    .pp-grid-inner { max-width: 1280px; margin: 0 auto; }
+    .pp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+    #pp-f-all:checked ~ .pp-page .pp-project { display: block; }
+    #pp-f-leasehold:checked ~ .pp-page .pp-project:not([data-category="leasehold"]) { display: none; }
+    #pp-f-bathroom:checked ~ .pp-page .pp-project:not([data-category="bathroom"]) { display: none; }
+    #pp-f-kitchen:checked ~ .pp-page .pp-project:not([data-category="kitchen"]) { display: none; }
+    #pp-f-basement:checked ~ .pp-page .pp-project:not([data-category="basement"]) { display: none; }
+
+    /* HOVER-EXPAND CARDS */
+    .pp-project { position: relative; background: #fff; border-radius: 8px; overflow: hidden; border: 1px solid #e5e5e0; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; aspect-ratio: 4 / 5; display: block; }
+    .pp-project:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+    .pp-project-img { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.5s ease; }
+    .pp-project:hover .pp-project-img { transform: scale(1.08); }
+    .pp-project-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.95) 100%); transition: background 0.3s ease; }
+    .pp-project:hover .pp-project-overlay { background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.95) 100%); }
+    .pp-project-info { position: absolute; left: 0; right: 0; bottom: 0; padding: 24px; color: #fff; z-index: 2; }
+    .pp-project-tag { display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; background: rgba(255,255,255,0.2); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: 4px 10px; border-radius: 4px; margin-bottom: 12px; font-weight: 500; }
+    .pp-project h3 { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 4px 0; color: #fff; line-height: 1.2; }
+    .pp-project-location { font-size: 13px; color: rgba(255,255,255,0.8); margin: 0; }
+    .pp-project-details { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), margin-top 0.4s ease; margin-top: 0; }
+    .pp-project:hover .pp-project-details { max-height: 240px; margin-top: 16px; }
+    .pp-project-details p { font-size: 14px; color: rgba(255,255,255,0.92); line-height: 1.5; margin: 0 0 12px 0; }
+    .pp-project-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.2); }
+    .pp-spec-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.6); margin-bottom: 2px; }
+    .pp-spec-value { font-size: 13px; color: #fff; font-weight: 500; }
+
+    /* TESTIMONIAL */
+    .pp-testimonial { background: #a8c1d9; padding: 96px 24px; }
+    .pp-testimonial-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+    .pp-testimonial-label { font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; color: #2a3a4a; margin-bottom: 24px; font-weight: 500; }
+    .pp-testimonial p { font-size: clamp(24px, 3vw, 36px); font-weight: 600; line-height: 1.4; letter-spacing: -0.01em; color: #111; margin: 0 0 32px 0; }
+    .pp-testimonial-author { font-size: 15px; color: #2a3a4a; }
+
+    /* CTA */
+    .pp-cta { background: #111; color: #fff; padding: 96px 24px; text-align: center; }
+    .pp-cta h2 { font-size: clamp(36px, 4vw, 56px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 0 auto 24px auto; max-width: 800px; color: #fff; }
+    .pp-cta p { font-size: 18px; color: #aaa; margin: 0 auto 40px auto; max-width: 600px; line-height: 1.5; }
+    .pp-cta-btn { background: #fff; color: #111 !important; padding: 14px 28px; border-radius: 6px; font-size: 16px; font-weight: 500; display: inline-block; transition: background 0.2s; }
+    .pp-cta-btn:hover { background: #ddd; }
+
+    /* ===== FOOTER (no social icons) ===== */
+    .site-footer { background: #0a0a0a; color: #fff; padding: 80px 24px 32px 24px; }
+    .footer-inner { max-width: 1280px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 64px; }
+    .footer-col h4 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 20px 0; color: #888; font-weight: 600; }
+    .footer-col ul { list-style: none; padding: 0; margin: 0; }
+    .footer-col ul li { margin-bottom: 12px; color: #ccc; font-size: 15px; }
+    .footer-col ul li a { color: #ccc; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: #fff; }
+    .footer-newsletter h3 { font-size: 24px; font-weight: 700; margin: 0 0 12px 0; color: #fff; }
+    .footer-newsletter p { color: #aaa; margin: 0 0 20px 0; line-height: 1.5; }
+    .footer-form { display: flex; gap: 8px; max-width: 380px; }
+    .footer-form input { flex: 1; padding: 12px 16px; border: none; border-radius: 6px; font-size: 15px; background: #fff; color: #111; }
+    .footer-form button { background: #a8c1d9; color: #111; border: none; padding: 12px 24px; border-radius: 6px; font-weight: 500; cursor: pointer; font-size: 15px; }
+    .footer-bottom { border-top: 1px solid #222; padding-top: 32px; color: #777; font-size: 14px; text-align: center; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .pp-hero { padding: 64px 24px 48px 24px; }
+      .pp-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+      .pp-grid { grid-template-columns: repeat(2, 1fr); }
+      .pp-testimonial, .pp-cta { padding: 64px 24px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .footer-newsletter { grid-column: 1 / -1; }
+
+      /* Mobile nav */
+      .menu-toggle { display: block; }
+      .site-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #EAEAEE; flex-direction: column; padding: 24px; gap: 20px; border-bottom: 1px solid #d4d4d8; }
+      #menu-checkbox:checked ~ .site-nav { display: flex; }
+      .header-inner { position: relative; }
+    }
+    @media (max-width: 600px) {
+      .pp-stats-grid { grid-template-columns: 1fr; }
+      .pp-grid { grid-template-columns: 1fr; }
+      .pp-project { aspect-ratio: 4 / 4; }
+      .pp-project-details { max-height: 240px; margin-top: 16px; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">2266446 ALBERTA LTD</a>
+      <input type="checkbox" id="menu-checkbox">
+      <label for="menu-checkbox" class="menu-toggle"><span></span><span></span><span></span></label>
+      <nav class="site-nav">
+        <a href="services.html">Services</a>
+        <a href="projects.html">Past Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="nav-cta">Get a Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Filter radios MUST be siblings of .pp-page for the CSS to work -->
+  <input type="radio" name="pp-filter" id="pp-f-all" class="pp-radio" checked>
+  <input type="radio" name="pp-filter" id="pp-f-leasehold" class="pp-radio">
+  <input type="radio" name="pp-filter" id="pp-f-bathroom" class="pp-radio">
+  <input type="radio" name="pp-filter" id="pp-f-kitchen" class="pp-radio">
+  <input type="radio" name="pp-filter" id="pp-f-basement" class="pp-radio">
+
+  <!-- ========== PROJECTS PAGE CONTENT ========== -->
+  <div class="pp-page">
+
+    <!-- HERO -->
+    <section class="pp-hero">
+      <div class="pp-hero-inner">
+        <div class="pp-label">Past Projects</div>
+        <h1>Real spaces. Real craftsmanship. Built across Alberta.</h1>
+        <p>A look at some of our recent leasehold improvements and renovations. Hover any project to see more details.</p>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="pp-stats">
+      <div class="pp-stats-grid">
+        <div class="pp-stats-item"><h3>200+</h3><p>Projects Completed</p></div>
+        <div class="pp-stats-item"><h3>15+</h3><p>Years Building</p></div>
+        <div class="pp-stats-item"><h3>40+</h3><p>Commercial Tenants</p></div>
+        <div class="pp-stats-item"><h3>100%</h3><p>On-Time Delivery</p></div>
+      </div>
+    </section>
+
+    <!-- FILTERS -->
+    <section class="pp-filters-wrap">
+      <div class="pp-filters-inner">
+        <div class="pp-filters">
+          <label for="pp-f-all" class="pp-filter-label">All Projects</label>
+          <label for="pp-f-leasehold" class="pp-filter-label">Leasehold</label>
+          <label for="pp-f-bathroom" class="pp-filter-label">Bathroom</label>
+          <label for="pp-f-kitchen" class="pp-filter-label">Kitchen</label>
+          <label for="pp-f-basement" class="pp-filter-label">Basement</label>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECT GRID -->
+    <section class="pp-grid-wrap">
+      <div class="pp-grid-inner">
+        <div class="pp-grid">
+
+          <!-- Project 1 - Office Build-Out -->
+          <div class="pp-project" data-category="leasehold">
+            <div class="pp-project-img" style="background-image: url('https://raw.githubusercontent.com/FunctionFury/2266446_ALBERTA_LTD/main/project-office-buildout.jpeg');"></div>
+            <div class="pp-project-overlay"></div>
+            <div class="pp-project-info">
+              <span class="pp-project-tag">Leasehold</span>
+              <h3>Downtown Office Build-Out</h3>
+              <p class="pp-project-location">Calgary, AB · 2025</p>
+              <div class="pp-project-details">
+                <p>Complete fit-up of a 4,200 sq. ft. corporate office including conference rooms, kitchen, and open workspace.</p>
+                <div class="pp-project-specs">
+                  <div>
+                    <div class="pp-spec-label">Size</div>
+                    <div class="pp-spec-value">4,200 sq ft</div>
+                  </div>
+                  <div>
+                    <div class="pp-spec-label">Duration</div>
+                    <div class="pp-spec-value">10 weeks</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 - Master Ensuite -->
+          <div class="pp-project" data-category="bathroom">
+            <div class="pp-project-img" style="background-image: url('https://raw.githubusercontent.com/FunctionFury/2266446_ALBERTA_LTD/main/project-master-ensuite.jpeg');"></div>
+            <div class="pp-project-overlay"></div>
+            <div class="pp-project-info">
+              <span class="pp-project-tag">Bathroom</span>
+              <h3>Master Ensuite Remodel</h3>
+              <p class="pp-project-location">Edmonton, AB · 2025</p>
+              <div class="pp-project-details">
+                <p>Full ensuite renovation with custom tile work, freestanding tub, and walk-in glass shower.</p>
+                <div class="pp-project-specs">
+                  <div>
+                    <div class="pp-spec-label">Scope</div>
+                    <div class="pp-spec-value">Full Remodel</div>
+                  </div>
+                  <div>
+                    <div class="pp-spec-label">Duration</div>
+                    <div class="pp-spec-value">5 weeks</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 - Modern Kitchen -->
+          <div class="pp-project" data-category="kitchen">
+            <div class="pp-project-img" style="background-image: url('https://raw.githubusercontent.com/FunctionFury/2266446_ALBERTA_LTD/main/project-modern-kitchen.jpeg');"></div>
+            <div class="pp-project-overlay"></div>
+            <div class="pp-project-info">
+              <span class="pp-project-tag">Kitchen</span>
+              <h3>Modern Kitchen Renovation</h3>
+              <p class="pp-project-location">Calgary, AB · 2024</p>
+              <div class="pp-project-details">
+                <p>Open-concept kitchen redesign with quartz counters, custom cabinetry, and large island.</p>
+                <div class="pp-project-specs">
+                  <div>
+                    <div class="pp-spec-label">Style</div>
+                    <div class="pp-spec-value">Modern Open</div>
+                  </div>
+                  <div>
+                    <div class="pp-spec-label">Duration</div>
+                    <div class="pp-spec-value">7 weeks</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4 - Basement Suite -->
+          <div class="pp-project" data-category="basement">
+            <div class="pp-project-img" style="background-image: url('https://raw.githubusercontent.com/FunctionFury/2266446_ALBERTA_LTD/main/project-basement-suite.jpeg');"></div>
+            <div class="pp-project-overlay"></div>
+            <div class="pp-project-info">
+              <span class="pp-project-tag">Basement</span>
+              <h3>Legal Basement Suite</h3>
+              <p class="pp-project-location">Edmonton, AB · 2024</p>
+              <div class="pp-project-details">
+                <p>Secondary suite development with separate entrance, full kitchen, bedroom, and bathroom — fully permitted.</p>
+                <div class="pp-project-specs">
+                  <div>
+                    <div class="pp-spec-label">Type</div>
+                    <div class="pp-spec-value">Legal Suite</div>
+                  </div>
+                  <div>
+                    <div class="pp-spec-label">Duration</div>
+                    <div class="pp-spec-value">12 weeks</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5 - Retail Fit-Up -->
+          <div class="pp-project" data-category="leasehold">
+            <div class="pp-project-img" style="background-image: url('https://raw.githubusercontent.com/FunctionFury/2266446_ALBERTA_LTD/main/project-retail-fitup.jpeg');"></div>
+            <div class="pp-project-overlay"></div>
+            <div class="pp-project-info">
+              <span class="pp-project-tag">Leasehold</span>
+              <h3>Boutique Retail Fit-Up</h3>
+              <p class="pp-project-location">Calgary, AB · 2024</p>
+              <div class="pp-project-details">
+                <p>Retail space transformation including custom millwork, lighting design, and brand-aligned finishes.</p>
+                <div class="pp-project-specs">
+                  <div>
+                    <div class="pp-spec-label">Size</div>
+                    <div class="pp-spec-value">1,800 sq ft</div>
+                  </div>
+                  <div>
+                    <div class="pp-spec-label">Duration</div>
+                    <div class="pp-spec-value">6 weeks</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 6 - Family Bathroom -->
+          <div class="pp-project" data-category="bathroom">
+            <div class="pp-project-img" style="background-image: url('https://raw.githubusercontent.com/FunctionFury/2266446_ALBERTA_LTD/main/project-family-bathroom.jpeg');"></div>
+            <div class="pp-project-overlay"></div>
+            <div class="pp-project-info">
+              <span class="pp-project-tag">Bathroom</span>
+              <h3>Family Bathroom Refresh</h3>
+              <p class="pp-project-location">Calgary, AB · 2023</p>
+              <div class="pp-project-details">
+                <p>Mid-budget bathroom update with new vanity, tile, fixtures, and improved storage solutions.</p>
+                <div class="pp-project-specs">
+                  <div>
+                    <div class="pp-spec-label">Scope</div>
+                    <div class="pp-spec-value">Cosmetic</div>
+                  </div>
+                  <div>
+                    <div class="pp-spec-label">Duration</div>
+                    <div class="pp-spec-value">3 weeks</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 7 - Heritage Kitchen -->
+          <div class="pp-project" data-category="kitchen">
+            <div class="pp-project-img" style="background-image: url('https://raw.githubusercontent.com/FunctionFury/2266446_ALBERTA_LTD/main/project-heritage-kitchen.jpeg');"></div>
+            <div class="pp-project-overlay"></div>
+            <div class="pp-project-info">
+              <span class="pp-project-tag">Kitchen</span>
+              <h3>Heritage Home Kitchen</h3>
+              <p class="pp-project-location">Edmonton, AB · 2023</p>
+              <div class="pp-project-details">
+                <p>Renovation of a 1920s kitchen preserving original character while adding modern functionality and appliances.</p>
+                <div class="pp-project-specs">
+                  <div>
+                    <div class="pp-spec-label">Style</div>
+                    <div class="pp-spec-value">Heritage</div>
+                  </div>
+                  <div>
+                    <div class="pp-spec-label">Duration</div>
+                    <div class="pp-spec-value">8 weeks</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section class="pp-testimonial">
+      <div class="pp-testimonial-inner">
+        <div class="pp-testimonial-label">From a recent client</div>
+        <p>"Every project they delivered for us has been on time, on budget, and finished to a standard that consistently exceeds expectations."</p>
+        <div class="pp-testimonial-author">— Property Manager, Calgary</div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="pp-cta">
+      <h2>Want your project on this page next?</h2>
+      <p>Free, no-obligation quote. Most replies within 24 hours.</p>
+      <a href="contact.html" class="pp-cta-btn">Start Your Project</a>
+    </section>
+
+  </div>
+
+  <!-- ========== FOOTER (no social icons) ========== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-newsletter">
+          <h3>Join Our Mailing List</h3>
+          <p>Project tips, seasonal offers, and updates from our crew — straight to your inbox.</p>
+          <div class="footer-form">
+            <input type="email" placeholder="Email Address">
+            <button>Sign Up</button>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="projects.html">Past Projects</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li>info@example.com</li>
+            <li>(403) 000-0000</li>
+            <li>Alberta, Canada</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 2266446 Alberta Ltd. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
