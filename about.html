@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="2266446 Alberta Ltd is a licensed general contractor in Alberta. Learn about our story, principles, and commitment to craftsmanship.">
+  <title>About Us | 2266446 Alberta Ltd</title>
+
+  <style>
+    /* ===== GLOBAL RESET & BASE ===== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif; color: #111; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ===== HEADER ===== */
+    .site-header { position: sticky; top: 0; z-index: 100; background: #EAEAEE; border-bottom: 1px solid #d4d4d8; padding: 20px 24px; }
+    .header-inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .site-logo { font-size: 18px; font-weight: 700; color: #111; letter-spacing: -0.01em; }
+    .site-nav { display: flex; gap: 32px; align-items: center; }
+    .site-nav a { font-size: 15px; font-weight: 500; color: #111; transition: opacity 0.2s; }
+    .site-nav a:hover { opacity: 0.6; }
+    .site-nav .nav-cta { background: #111; color: #fff !important; padding: 10px 20px; border-radius: 6px; }
+    .site-nav .nav-cta:hover { background: #333; opacity: 1; }
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .menu-toggle span { display: block; width: 24px; height: 2px; background: #111; margin: 5px 0; transition: 0.3s; }
+    #menu-checkbox { display: none; }
+
+    /* ===== ABOUT PAGE STYLES ===== */
+    .ab-page * { box-sizing: border-box; }
+    .ab-page a { text-decoration: none; color: inherit; }
+
+    /* HERO */
+    .ab-hero { background: #EAEAEE; padding: 96px 24px 80px 24px; }
+    .ab-hero-inner { max-width: 1280px; margin: 0 auto; }
+    .ab-label { font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; color: #666; margin-bottom: 16px; font-weight: 500; }
+    .ab-hero h1 { font-size: clamp(48px, 6vw, 88px); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin: 0 0 24px 0; max-width: 1000px; color: #111; }
+    .ab-hero p { font-size: 20px; color: #444; max-width: 720px; line-height: 1.5; margin: 0; }
+
+    /* STORY (centered, narrow column, oversized typography) */
+    .ab-story { padding: 120px 24px; background: #fff; }
+    .ab-story-inner { max-width: 820px; margin: 0 auto; text-align: left; }
+    .ab-story h2 { font-size: clamp(40px, 5vw, 64px); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; margin: 0 0 48px 0; color: #111; }
+    .ab-story p { font-size: 21px; color: #333; margin: 0 0 28px 0; line-height: 1.55; }
+    .ab-story p:first-of-type { font-size: 24px; color: #111; font-weight: 500; line-height: 1.45; }
+    .ab-story p:last-of-type { margin-bottom: 0; }
+    .ab-story-divider { width: 60px; height: 3px; background: #111; margin: 0 0 40px 0; }
+
+    /* PRINCIPLE PULL QUOTE */
+    .ab-quote { background: #111; color: #fff; padding: 120px 24px; text-align: center; }
+    .ab-quote-inner { max-width: 900px; margin: 0 auto; }
+    .ab-quote-mark { font-size: 80px; color: #444; font-family: Georgia, serif; line-height: 1; margin-bottom: 16px; }
+    .ab-quote p { font-size: clamp(28px, 3.5vw, 44px); font-weight: 600; line-height: 1.3; letter-spacing: -0.02em; margin: 0 0 32px 0; color: #fff; }
+    .ab-quote-attribution { font-size: 14px; color: #888; text-transform: uppercase; letter-spacing: 0.1em; }
+
+    /* VALUES */
+    .ab-values { background: #f5f5f3; padding: 96px 24px; }
+    .ab-values-inner { max-width: 1280px; margin: 0 auto; }
+    .ab-values h2 { font-size: clamp(36px, 4vw, 56px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 16px 0; max-width: 720px; color: #111; }
+    .ab-values > .ab-values-inner > p { font-size: 18px; color: #555; max-width: 720px; line-height: 1.5; margin-bottom: 64px; }
+    .ab-values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .ab-value { background: #fff; padding: 40px; border-radius: 8px; border: 1px solid #e5e5e0; }
+    .ab-value-num { font-size: 14px; color: #666; font-weight: 600; letter-spacing: 0.1em; margin-bottom: 16px; }
+    .ab-value h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 12px 0; color: #111; }
+    .ab-value p { font-size: 15px; color: #555; line-height: 1.6; margin: 0; }
+
+    /* STATS BAR */
+    .ab-stats { background: #111; color: #fff; padding: 80px 24px; }
+    .ab-stats-grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center; }
+    .ab-stats-item h3 { font-size: 48px; font-weight: 700; margin: 0 0 8px 0; letter-spacing: -0.03em; color: #fff; }
+    .ab-stats-item p { font-size: 14px; color: #aaa; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; }
+
+    /* CREDENTIALS (no image, full-width text) */
+    .ab-creds { background: #f5f5f3; padding: 96px 24px; }
+    .ab-creds-inner { max-width: 900px; margin: 0 auto; }
+    .ab-creds h2 { font-size: clamp(36px, 4vw, 56px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 24px 0; color: #111; }
+    .ab-creds > .ab-creds-inner > p { font-size: 18px; color: #555; line-height: 1.6; margin: 0 0 48px 0; max-width: 720px; }
+    .ab-creds-list { list-style: none; padding: 16px 32px; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; background: #fff; border-radius: 8px; border: 1px solid #e5e5e0; }
+    .ab-creds-list li { font-size: 16px; color: #111; padding: 20px 0; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 14px; }
+    .ab-creds-list li:nth-last-child(-n+2) { border-bottom: none; }
+    .ab-creds-list li:before { content: "✓"; color: #fff; background: #111; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+
+    /* CTA */
+    .ab-cta { background: #111; color: #fff; padding: 96px 24px; text-align: center; }
+    .ab-cta h2 { font-size: clamp(36px, 4vw, 56px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 0 auto 24px auto; max-width: 800px; color: #fff; }
+    .ab-cta p { font-size: 18px; color: #aaa; margin: 0 auto 40px auto; max-width: 600px; line-height: 1.5; }
+    .ab-cta-btn { background: #fff; color: #111 !important; padding: 14px 28px; border-radius: 6px; font-size: 16px; font-weight: 500; display: inline-block; transition: background 0.2s; }
+    .ab-cta-btn:hover { background: #ddd; }
+
+    /* ===== FOOTER (no social icons) ===== */
+    .site-footer { background: #0a0a0a; color: #fff; padding: 80px 24px 32px 24px; }
+    .footer-inner { max-width: 1280px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 64px; }
+    .footer-col h4 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 20px 0; color: #888; font-weight: 600; }
+    .footer-col ul { list-style: none; padding: 0; margin: 0; }
+    .footer-col ul li { margin-bottom: 12px; color: #ccc; font-size: 15px; }
+    .footer-col ul li a { color: #ccc; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: #fff; }
+    .footer-newsletter h3 { font-size: 24px; font-weight: 700; margin: 0 0 12px 0; color: #fff; }
+    .footer-newsletter p { color: #aaa; margin: 0 0 20px 0; line-height: 1.5; }
+    .footer-form { display: flex; gap: 8px; max-width: 380px; }
+    .footer-form input { flex: 1; padding: 12px 16px; border: none; border-radius: 6px; font-size: 15px; background: #fff; color: #111; }
+    .footer-form button { background: #a8c1d9; color: #111; border: none; padding: 12px 24px; border-radius: 6px; font-weight: 500; cursor: pointer; font-size: 15px; }
+    .footer-bottom { border-top: 1px solid #222; padding-top: 32px; color: #777; font-size: 14px; text-align: center; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .ab-hero { padding: 64px 24px 56px 24px; }
+      .ab-story { padding: 80px 24px; }
+      .ab-quote { padding: 80px 24px; }
+      .ab-values, .ab-creds, .ab-cta { padding: 64px 24px; }
+      .ab-stats { padding: 56px 24px; }
+      .ab-values-grid { grid-template-columns: 1fr; }
+      .ab-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+      .ab-creds-list { grid-template-columns: 1fr; padding: 8px 24px; }
+      .ab-creds-list li { padding: 18px 0; border-bottom: 1px solid #eee !important; }
+      .ab-creds-list li:last-child { border-bottom: none !important; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .footer-newsletter { grid-column: 1 / -1; }
+
+      /* Mobile nav */
+      .menu-toggle { display: block; }
+      .site-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #EAEAEE; flex-direction: column; padding: 24px; gap: 20px; border-bottom: 1px solid #d4d4d8; }
+      #menu-checkbox:checked ~ .site-nav { display: flex; }
+      .header-inner { position: relative; }
+    }
+    @media (max-width: 600px) {
+      .ab-stats-grid { grid-template-columns: 1fr; }
+      .ab-stats-item h3 { font-size: 40px; }
+      .ab-story p:first-of-type { font-size: 20px; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">2266446 ALBERTA LTD</a>
+      <input type="checkbox" id="menu-checkbox">
+      <label for="menu-checkbox" class="menu-toggle"><span></span><span></span><span></span></label>
+      <nav class="site-nav">
+        <a href="services.html">Services</a>
+        <a href="projects.html">Past Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="nav-cta">Get a Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== ABOUT PAGE CONTENT ========== -->
+  <div class="ab-page">
+
+    <!-- HERO -->
+    <section class="ab-hero">
+      <div class="ab-hero-inner">
+        <div class="ab-label">About Us</div>
+        <h1>Built on craftsmanship. Driven by trust. Rooted in Alberta.</h1>
+        <p>We're a team of licensed builders, project managers, and finishing specialists who take pride in delivering work we'd put our name on — every time.</p>
+      </div>
+    </section>
+
+    <!-- STORY (centered, oversized type) -->
+    <section class="ab-story">
+      <div class="ab-story-inner">
+        <div class="ab-label">Our Story</div>
+        <div class="ab-story-divider"></div>
+        <h2>The right team makes all the difference.</h2>
+        <p>2266446 Alberta Ltd was founded on a simple belief: construction shouldn't be stressful.</p>
+        <p>Too many homeowners and business tenants have lived through projects that ran late, blew past budget, or left them chasing tradespeople for weeks. We knew there was a better way to do this.</p>
+        <p>From the first consultation to the final walkthrough, you'll have one team coordinating every trade, every permit, and every detail. We communicate clearly, we keep our timelines, and we finish what we start.</p>
+        <p>That commitment has earned us repeat clients, referrals, and a reputation across Alberta for showing up, doing the work, and standing behind it.</p>
+      </div>
+    </section>
+
+    <!-- PULL QUOTE -->
+    <section class="ab-quote">
+      <div class="ab-quote-inner">
+        <div class="ab-quote-mark">"</div>
+        <p>If we wouldn't accept it in our own home, it doesn't ship. That's the standard. Every project. No exceptions.</p>
+        <div class="ab-quote-attribution">— Our Workmanship Standard</div>
+      </div>
+    </section>
+
+    <!-- VALUES -->
+    <section class="ab-values">
+      <div class="ab-values-inner">
+        <div class="ab-label">What We Stand For</div>
+        <h2>Three principles. Every project.</h2>
+        <p>These aren't slogans. They're the standard our crew is held to on every site.</p>
+
+        <div class="ab-values-grid">
+
+          <div class="ab-value">
+            <div class="ab-value-num">01</div>
+            <h3>Craftsmanship First</h3>
+            <p>The work has to last. We don't cut corners on materials, framing, finishes, or anything you can't see behind the drywall.</p>
+          </div>
+
+          <div class="ab-value">
+            <div class="ab-value-num">02</div>
+            <h3>Clear Communication</h3>
+            <p>You'll always know what's happening. Weekly check-ins, progress photos, and a single point of contact mean no surprises.</p>
+          </div>
+
+          <div class="ab-value">
+            <div class="ab-value-num">03</div>
+            <h3>On Time. On Budget.</h3>
+            <p>We provide detailed quotes up front and stick to them. If something changes, you'll hear about it before any work moves forward.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="ab-stats">
+      <div class="ab-stats-grid">
+        <div class="ab-stats-item">
+          <h3>15+</h3>
+          <p>Years in Business</p>
+        </div>
+        <div class="ab-stats-item">
+          <h3>200+</h3>
+          <p>Projects Completed</p>
+        </div>
+        <div class="ab-stats-item">
+          <h3>98%</h3>
+          <p>Client Satisfaction</p>
+        </div>
+        <div class="ab-stats-item">
+          <h3>40%</h3>
+          <p>Repeat &amp; Referral</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CREDENTIALS -->
+    <section class="ab-creds">
+      <div class="ab-creds-inner">
+        <div class="ab-label">Credentials</div>
+        <h2>Licensed, insured, and accountable.</h2>
+        <p>We carry every certification and protection you should expect from your contractor — and we're happy to share documentation on request.</p>
+        <ul class="ab-creds-list">
+          <li>Alberta Prepaid Contracting Business License</li>
+          <li>$5M Commercial General Liability Insurance</li>
+          <li>WCB Coverage in Good Standing</li>
+          <li>Better Business Bureau Accredited</li>
+          <li>Journeyman Certified Tradespeople</li>
+          <li>Workmanship Warranty on All Projects</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="ab-cta">
+      <h2>Let's build something together.</h2>
+      <p>Free, no-obligation quote. Most replies within 24 hours.</p>
+      <a href="contact.html" class="ab-cta-btn">Get In Touch</a>
+    </section>
+
+  </div>
+
+  <!-- ========== FOOTER (no social icons) ========== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-newsletter">
+          <h3>Join Our Mailing List</h3>
+          <p>Project tips, seasonal offers, and updates from our crew — straight to your inbox.</p>
+          <div class="footer-form">
+            <input type="email" placeholder="Email Address">
+            <button>Sign Up</button>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="projects.html">Past Projects</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li>info@example.com</li>
+            <li>(403) 000-0000</li>
+            <li>Alberta, Canada</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 2266446 Alberta Ltd. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
