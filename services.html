@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Construction and renovation services in Alberta. Leasehold improvements, bathroom, kitchen, and basement renovations. Licensed and insured.">
+  <title>Services | 2266446 Alberta Ltd</title>
+
+  <style>
+    /* ===== GLOBAL RESET & BASE ===== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif; color: #111; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ===== HEADER ===== */
+    .site-header { position: sticky; top: 0; z-index: 100; background: #EAEAEE; border-bottom: 1px solid #d4d4d8; padding: 20px 24px; }
+    .header-inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .site-logo { font-size: 18px; font-weight: 700; color: #111; letter-spacing: -0.01em; }
+    .site-nav { display: flex; gap: 32px; align-items: center; }
+    .site-nav a { font-size: 15px; font-weight: 500; color: #111; transition: opacity 0.2s; }
+    .site-nav a:hover { opacity: 0.6; }
+    .site-nav .nav-cta { background: #111; color: #fff !important; padding: 10px 20px; border-radius: 6px; }
+    .site-nav .nav-cta:hover { background: #333; opacity: 1; }
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .menu-toggle span { display: block; width: 24px; height: 2px; background: #111; margin: 5px 0; transition: 0.3s; }
+    #menu-checkbox { display: none; }
+
+    /* ===== SERVICES PAGE STYLES ===== */
+    .sv-page * { box-sizing: border-box; }
+    .sv-page a { text-decoration: none; color: inherit; }
+
+    /* HERO */
+    .sv-hero { background: #EAEAEE; padding: 96px 24px 80px 24px; }
+    .sv-hero-inner { max-width: 1280px; margin: 0 auto; }
+    .sv-hero-label { font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; color: #666; margin-bottom: 16px; font-weight: 500; }
+    .sv-hero h1 { font-size: clamp(48px, 6vw, 88px); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin: 0 0 24px 0; max-width: 1000px; color: #111; }
+    .sv-hero p { font-size: 20px; color: #444; max-width: 720px; line-height: 1.5; margin: 0; }
+
+    /* INTRO STRIP */
+    .sv-intro { background: #111; color: #fff; padding: 64px 24px; }
+    .sv-intro-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: start; }
+    .sv-intro h2 { font-size: clamp(28px, 3vw, 40px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin: 0; color: #fff; }
+    .sv-intro p { font-size: 17px; color: #ccc; line-height: 1.6; margin: 0 0 16px 0; }
+    .sv-intro p:last-child { margin-bottom: 0; }
+
+    /* MAIN SERVICES (HOVER EXPAND) */
+    .sv-main { padding: 96px 24px; background: #f5f5f3; }
+    .sv-main-inner { max-width: 1280px; margin: 0 auto; }
+    .sv-section-label { font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; color: #666; margin-bottom: 16px; font-weight: 500; }
+    .sv-main h2 { font-size: clamp(36px, 4vw, 56px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 64px 0; max-width: 720px; color: #111; }
+    .sv-main-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .sv-main-card { position: relative; background: #fff; border-radius: 8px; overflow: hidden; border: 1px solid #e5e5e0; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; aspect-ratio: 4 / 5; display: block; }
+    .sv-main-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+    .sv-main-card-img { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.5s ease; }
+    .sv-main-card:hover .sv-main-card-img { transform: scale(1.08); }
+    .sv-main-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.95) 100%); transition: background 0.3s ease; }
+    .sv-main-card:hover .sv-main-overlay { background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.95) 100%); }
+    .sv-main-info { position: absolute; left: 0; right: 0; bottom: 0; padding: 32px; color: #fff; z-index: 2; }
+    .sv-main-tag { display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; background: rgba(255,255,255,0.2); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: 4px 10px; border-radius: 4px; margin-bottom: 16px; font-weight: 500; }
+    .sv-main-card h3 { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 8px 0; color: #fff; line-height: 1.1; }
+    .sv-main-tagline { font-size: 15px; color: rgba(255,255,255,0.85); margin: 0; }
+    .sv-main-details { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), margin-top 0.5s ease; margin-top: 0; }
+    .sv-main-card:hover .sv-main-details { max-height: 360px; margin-top: 20px; }
+    .sv-main-details p { font-size: 14px; color: rgba(255,255,255,0.92); line-height: 1.5; margin: 0 0 16px 0; }
+    .sv-main-list { list-style: none; padding: 0; margin: 0; }
+    .sv-main-list li { font-size: 13px; color: rgba(255,255,255,0.95); padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; gap: 8px; }
+    .sv-main-list li:last-child { border-bottom: none; }
+    .sv-main-list li:before { content: "✓"; color: #fff; font-weight: 700; font-size: 12px; }
+
+    /* RENOVATION SUB-CATEGORIES */
+    .sv-reno { padding: 96px 24px; background: #fff; }
+    .sv-reno-inner { max-width: 1280px; margin: 0 auto; }
+    .sv-reno h2 { font-size: clamp(36px, 4vw, 56px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 16px 0; color: #111; }
+    .sv-reno > .sv-reno-inner > p { font-size: 18px; color: #555; max-width: 720px; line-height: 1.5; margin-bottom: 64px; }
+    .sv-reno-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .sv-reno-card { position: relative; background: #f5f5f3; border-radius: 8px; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; aspect-ratio: 4 / 5; display: block; }
+    .sv-reno-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(0,0,0,0.12); }
+    .sv-reno-card-img { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.5s ease; }
+    .sv-reno-card:hover .sv-reno-card-img { transform: scale(1.08); }
+    .sv-reno-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.95) 100%); transition: background 0.3s ease; }
+    .sv-reno-card:hover .sv-reno-overlay { background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.95) 100%); }
+    .sv-reno-info { position: absolute; left: 0; right: 0; bottom: 0; padding: 24px; color: #fff; z-index: 2; }
+    .sv-reno-card h4 { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 6px 0; color: #fff; line-height: 1.2; }
+    .sv-reno-tagline { font-size: 14px; color: rgba(255,255,255,0.85); margin: 0; }
+    .sv-reno-details { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), margin-top 0.4s ease; margin-top: 0; }
+    .sv-reno-card:hover .sv-reno-details { max-height: 280px; margin-top: 16px; }
+    .sv-reno-details p { font-size: 13px; color: rgba(255,255,255,0.9); line-height: 1.5; margin: 0 0 12px 0; }
+    .sv-reno-list { list-style: none; padding: 12px 0 0 0; margin: 0; border-top: 1px solid rgba(255,255,255,0.2); }
+    .sv-reno-list li { font-size: 12px; color: rgba(255,255,255,0.92); padding: 4px 0; display: flex; align-items: center; gap: 6px; }
+    .sv-reno-list li:before { content: "→"; color: rgba(255,255,255,0.7); font-weight: 600; }
+
+    /* PROCESS */
+    .sv-process { padding: 96px 24px; background: #f5f5f3; }
+    .sv-process-inner { max-width: 1280px; margin: 0 auto; }
+    .sv-process h2 { font-size: clamp(36px, 4vw, 56px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 64px 0; max-width: 720px; color: #111; }
+    .sv-process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+    .sv-process-step .sv-step-num { font-size: 14px; color: #666; font-weight: 600; letter-spacing: 0.1em; margin-bottom: 16px; }
+    .sv-process-step h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 12px 0; color: #111; }
+    .sv-process-step p { font-size: 15px; color: #555; line-height: 1.6; margin: 0; }
+
+    /* CTA */
+    .sv-cta { background: #111; color: #fff; padding: 96px 24px; text-align: center; }
+    .sv-cta h2 { font-size: clamp(36px, 4vw, 56px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 0 auto 24px auto; max-width: 800px; color: #fff; }
+    .sv-cta p { font-size: 18px; color: #aaa; margin: 0 auto 40px auto; max-width: 600px; line-height: 1.5; }
+    .sv-cta-btn { background: #fff; color: #111 !important; padding: 14px 28px; border-radius: 6px; font-size: 16px; font-weight: 500; display: inline-block; transition: background 0.2s; }
+    .sv-cta-btn:hover { background: #ddd; }
+
+    /* ===== FOOTER (no social icons) ===== */
+    .site-footer { background: #0a0a0a; color: #fff; padding: 80px 24px 32px 24px; }
+    .footer-inner { max-width: 1280px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 64px; }
+    .footer-col h4 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 20px 0; color: #888; font-weight: 600; }
+    .footer-col ul { list-style: none; padding: 0; margin: 0; }
+    .footer-col ul li { margin-bottom: 12px; color: #ccc; font-size: 15px; }
+    .footer-col ul li a { color: #ccc; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: #fff; }
+    .footer-newsletter h3 { font-size: 24px; font-weight: 700; margin: 0 0 12px 0; color: #fff; }
+    .footer-newsletter p { color: #aaa; margin: 0 0 20px 0; line-height: 1.5; }
+    .footer-form { display: flex; gap: 8px; max-width: 380px; }
+    .footer-form input { flex: 1; padding: 12px 16px; border: none; border-radius: 6px; font-size: 15px; background: #fff; color: #111; }
+    .footer-form button { background: #a8c1d9; color: #111; border: none; padding: 12px 24px; border-radius: 6px; font-weight: 500; cursor: pointer; font-size: 15px; }
+    .footer-bottom { border-top: 1px solid #222; padding-top: 32px; color: #777; font-size: 14px; text-align: center; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .sv-hero { padding: 64px 24px 56px 24px; }
+      .sv-intro { padding: 48px 24px; }
+      .sv-intro-inner { grid-template-columns: 1fr; gap: 24px; }
+      .sv-main, .sv-reno, .sv-process, .sv-cta { padding: 64px 24px; }
+      .sv-main-grid { grid-template-columns: 1fr; }
+      .sv-reno-grid { grid-template-columns: 1fr; }
+      .sv-process-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+      .sv-main-details, .sv-reno-details { max-height: 360px; margin-top: 20px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .footer-newsletter { grid-column: 1 / -1; }
+
+      /* Mobile nav */
+      .menu-toggle { display: block; }
+      .site-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #EAEAEE; flex-direction: column; padding: 24px; gap: 20px; border-bottom: 1px solid #d4d4d8; }
+      #menu-checkbox:checked ~ .site-nav { display: flex; }
+      .header-inner { position: relative; }
+    }
+    @media (max-width: 600px) {
+      .sv-process-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">2266446 ALBERTA LTD</a>
+      <input type="checkbox" id="menu-checkbox">
+      <label for="menu-checkbox" class="menu-toggle"><span></span><span></span><span></span></label>
+      <nav class="site-nav">
+        <a href="services.html">Services</a>
+        <a href="projects.html">Past Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="nav-cta">Get a Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== SERVICES PAGE CONTENT ========== -->
+  <div class="sv-page">
+
+    <!-- HERO -->
+    <section class="sv-hero">
+      <div class="sv-hero-inner">
+        <div class="sv-hero-label">Our Services</div>
+        <h1>Construction and renovation services, done right the first time.</h1>
+        <p>From commercial leasehold improvements to full-home renovations, we deliver licensed, insured, code-compliant work across Alberta — on time and on budget.</p>
+      </div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="sv-intro">
+      <div class="sv-intro-inner">
+        <h2>Two specialties. One team. Every detail handled.</h2>
+        <div>
+          <p>Whether you're a business owner fitting out a new commercial space or a homeowner reimagining your property, we manage the entire project end-to-end.</p>
+          <p>Our crew handles permits, design coordination, trades, materials, and final walkthrough — so you only have to make decisions, not chase contractors.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN SERVICES (HOVER EXPAND) -->
+    <section class="sv-main">
+      <div class="sv-main-inner">
+        <div class="sv-section-label">What We Offer</div>
+        <h2>Hover any service to see what's included.</h2>
+
+        <div class="sv-main-grid">
+
+          <div class="sv-main-card">
+            <div class="sv-main-card-img" style="background-image: url('https://raw.githubusercontent.com/FunctionFury/2266446_ALBERTA_LTD/main/service-leasehold.jpeg');"></div>
+            <div class="sv-main-overlay"></div>
+            <div class="sv-main-info">
+              <span class="sv-main-tag">Commercial</span>
+              <h3>Leasehold Improvements</h3>
+              <p class="sv-main-tagline">Office, retail, and commercial fit-outs across Alberta.</p>
+              <div class="sv-main-details">
+                <p>Commercial build-outs and tenant improvements designed to launch your business space efficiently and to code.</p>
+                <ul class="sv-main-list">
+                  <li>Office build-outs</li>
+                  <li>Retail fit-ups</li>
+                  <li>Restaurant &amp; café spaces</li>
+                  <li>Demising walls &amp; reconfigurations</li>
+                  <li>Permits &amp; landlord coordination</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="sv-main-card">
+            <div class="sv-main-card-img" style="background-image: url('https://raw.githubusercontent.com/FunctionFury/2266446_ALBERTA_LTD/main/service-renovation.jpeg');"></div>
+            <div class="sv-main-overlay"></div>
+            <div class="sv-main-info">
+              <span class="sv-main-tag">Residential</span>
+              <h3>Home Renovations</h3>
+              <p class="sv-main-tagline">Single-room remodels to multi-room transformations.</p>
+              <div class="sv-main-details">
+                <p>Residential renovations from a single bathroom refresh to multi-room remodels — managed start to finish.</p>
+                <ul class="sv-main-list">
+                  <li>Bathroom remodels</li>
+                  <li>Kitchen renovations</li>
+                  <li>Basement development</li>
+                  <li>Permits &amp; design coordination</li>
+                  <li>Trade management</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- RENOVATION SUB-CATEGORIES (HOVER EXPAND) -->
+    <section class="sv-reno">
+      <div class="sv-reno-inner">
+        <div class="sv-section-label">Renovation Specialties</div>
+        <h2>Browse by room.</h2>
+        <p>Every renovation is unique, but every space deserves the same level of care and craftsmanship.</p>
+
+        <div class="sv-reno-grid">
+
+          <div class="sv-reno-card">
+            <div class="sv-reno-card-img" style="background-image: url('https://raw.githubusercontent.com/FunctionFury/2266446_ALBERTA_LTD/main/service-bathroom.jpeg');"></div>
+            <div class="sv-reno-overlay"></div>
+            <div class="sv-reno-info">
+              <h4>Bathroom</h4>
+              <p class="sv-reno-tagline">Full remodels &amp; refreshes</p>
+              <div class="sv-reno-details">
+                <p>Tile, plumbing, fixtures, and finishes done right — from cosmetic refreshes to full layout changes.</p>
+                <ul class="sv-reno-list">
+                  <li>Custom tile &amp; stonework</li>
+                  <li>Walk-in showers &amp; tubs</li>
+                  <li>Vanities &amp; storage</li>
+                  <li>Accessibility upgrades</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="sv-reno-card">
+            <div class="sv-reno-card-img" style="background-image: url('https://raw.githubusercontent.com/FunctionFury/2266446_ALBERTA_LTD/main/service-kitchen.jpeg');"></div>
+            <div class="sv-reno-overlay"></div>
+            <div class="sv-reno-info">
+              <h4>Kitchen</h4>
+              <p class="sv-reno-tagline">Custom &amp; modern designs</p>
+              <div class="sv-reno-details">
+                <p>Custom cabinetry, layout reconfigurations, and modern finishes that make the heart of your home work harder.</p>
+                <ul class="sv-reno-list">
+                  <li>Custom cabinetry</li>
+                  <li>Quartz &amp; stone counters</li>
+                  <li>Layout reconfigurations</li>
+                  <li>Appliance integration</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="sv-reno-card">
+            <div class="sv-reno-card-img" style="background-image: url('https://raw.githubusercontent.com/FunctionFury/2266446_ALBERTA_LTD/main/service-basement.jpeg');"></div>
+            <div class="sv-reno-overlay"></div>
+            <div class="sv-reno-info">
+              <h4>Basement</h4>
+              <p class="sv-reno-tagline">Suites, dev &amp; finishing</p>
+              <div class="sv-reno-details">
+                <p>Basement development, secondary suites, and finishing — turn unused square footage into living space that pays you back.</p>
+                <ul class="sv-reno-list">
+                  <li>Legal secondary suites</li>
+                  <li>Full basement development</li>
+                  <li>Permits &amp; inspections</li>
+                  <li>Egress windows &amp; safety</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="sv-process">
+      <div class="sv-process-inner">
+        <div class="sv-section-label">How We Work</div>
+        <h2>A simple, transparent process.</h2>
+
+        <div class="sv-process-grid">
+          <div class="sv-process-step">
+            <div class="sv-step-num">STEP 01</div>
+            <h3>Free Consultation</h3>
+            <p>We meet on-site or virtually to understand your space, vision, and budget. No pressure, no commitment.</p>
+          </div>
+          <div class="sv-process-step">
+            <div class="sv-step-num">STEP 02</div>
+            <h3>Quote &amp; Plan</h3>
+            <p>You receive a detailed written quote with line items, timeline, and scope of work — clear and itemized.</p>
+          </div>
+          <div class="sv-process-step">
+            <div class="sv-step-num">STEP 03</div>
+            <h3>Build &amp; Update</h3>
+            <p>Our crew gets to work. You stay informed with regular check-ins and progress photos throughout the build.</p>
+          </div>
+          <div class="sv-process-step">
+            <div class="sv-step-num">STEP 04</div>
+            <h3>Final Walkthrough</h3>
+            <p>We complete a walkthrough with you, address any concerns, and back our work with a workmanship warranty.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="sv-cta">
+      <h2>Have a project in mind? Let's talk.</h2>
+      <p>Free, no-obligation quote. Most replies within 24 hours.</p>
+      <a href="contact.html" class="sv-cta-btn">Request Your Quote</a>
+    </section>
+
+  </div>
+
+  <!-- ========== FOOTER (no social icons) ========== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-newsletter">
+          <h3>Join Our Mailing List</h3>
+          <p>Project tips, seasonal offers, and updates from our crew — straight to your inbox.</p>
+          <div class="footer-form">
+            <input type="email" placeholder="Email Address">
+            <button>Sign Up</button>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="projects.html">Past Projects</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li>info@example.com</li>
+            <li>(403) 000-0000</li>
+            <li>Alberta, Canada</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 2266446 Alberta Ltd. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
