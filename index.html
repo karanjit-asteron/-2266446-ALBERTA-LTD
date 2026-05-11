@@ -1,221 +1,309 @@
-<!-- ============================================
-     HOMEPAGE - SINGLE CODE BLOCK
-     Whole Home removed. All links cleaned up.
-     Renovation cards now link to /services where
-     the hover-expand details live.
-     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Alberta-based general contractor specializing in leasehold improvements and renovations. Licensed, insured, and committed to finishing on time.">
+  <title>2266446 Alberta Ltd | General Contractor — Alberta</title>
 
-<style>
-  .hm-page * { box-sizing: border-box; }
-  .hm-page { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif; color: #111; }
-  .hm-page a { text-decoration: none; color: inherit; }
+  <style>
+    /* ===== GLOBAL RESET & BASE ===== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif; color: #111; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
 
-  /* ===== HERO ===== */
-  .hm-hero { background: #EAEAEE; padding: 96px 24px 80px 24px; }
-  .hm-hero-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-  .hm-hero-image { width: 100%; aspect-ratio: 4 / 5; background-size: cover; background-position: center; border-radius: 4px; }
-  .hm-hero h1 { font-size: clamp(40px, 5vw, 72px); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin: 0 0 24px 0; color: #111; }
-  .hm-hero p { font-size: 18px; color: #444; margin: 0 0 32px 0; max-width: 480px; line-height: 1.5; }
-  .hm-hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
-  .hm-btn-primary { background: #111; color: #fff !important; padding: 14px 28px; border-radius: 6px; font-size: 16px; font-weight: 500; display: inline-block; transition: background 0.2s; }
-  .hm-btn-primary:hover { background: #333; }
-  .hm-btn-secondary { background: transparent; color: #111 !important; padding: 14px 28px; border-radius: 6px; font-size: 16px; font-weight: 500; border: 1px solid #111; display: inline-block; transition: all 0.2s; }
-  .hm-btn-secondary:hover { background: #111; color: #fff !important; }
+    /* ===== HEADER ===== */
+    .site-header { position: sticky; top: 0; z-index: 100; background: #EAEAEE; border-bottom: 1px solid #d4d4d8; padding: 20px 24px; }
+    .header-inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .site-logo { font-size: 18px; font-weight: 700; color: #111; letter-spacing: -0.01em; }
+    .site-nav { display: flex; gap: 32px; align-items: center; }
+    .site-nav a { font-size: 15px; font-weight: 500; color: #111; transition: opacity 0.2s; }
+    .site-nav a:hover { opacity: 0.6; }
+    .site-nav .nav-cta { background: #111; color: #fff !important; padding: 10px 20px; border-radius: 6px; }
+    .site-nav .nav-cta:hover { background: #333; opacity: 1; }
 
-  /* ===== TRUST STRIP ===== */
-  .hm-trust { background: #111; color: #fff; padding: 48px 24px; }
-  .hm-trust-grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center; }
-  .hm-trust-item h3 { font-size: 36px; font-weight: 700; margin: 0 0 8px 0; letter-spacing: -0.02em; color: #fff; }
-  .hm-trust-item p { font-size: 14px; color: #aaa; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; }
+    /* Mobile menu (CSS-only hamburger) */
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .menu-toggle span { display: block; width: 24px; height: 2px; background: #111; margin: 5px 0; transition: 0.3s; }
+    #menu-checkbox { display: none; }
 
-  /* ===== SERVICES ===== */
-  .hm-services { padding: 96px 24px; background: #f5f5f3; }
-  .hm-services-inner { max-width: 1280px; margin: 0 auto; }
-  .hm-label { font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; color: #666; margin-bottom: 16px; font-weight: 500; }
-  .hm-services h2 { font-size: clamp(36px, 4vw, 56px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 64px 0; max-width: 720px; color: #111; }
-  .hm-services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-  .hm-service-card { background: #fff; padding: 40px; border-radius: 8px; transition: transform 0.2s, box-shadow 0.2s; border: 1px solid #e5e5e0; display: block; }
-  .hm-service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
-  .hm-service-card-image { width: 100%; aspect-ratio: 16 / 9; background-size: cover; background-position: center; border-radius: 4px; margin-bottom: 24px; }
-  .hm-service-card h3 { font-size: 28px; font-weight: 700; margin: 0 0 12px 0; letter-spacing: -0.02em; color: #111; }
-  .hm-service-card p { color: #555; margin: 0 0 24px 0; line-height: 1.5; }
-  .hm-service-card-link { font-weight: 500; border-bottom: 1px solid #111; padding-bottom: 2px; color: #111; }
+    /* ===== HOMEPAGE STYLES ===== */
+    .hm-page * { box-sizing: border-box; }
+    .hm-page a { text-decoration: none; color: inherit; }
 
-  /* Renovation sub-grid - now 3 columns instead of 4 */
-  .hm-reno-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
-  .hm-reno-card { background: #fff; padding: 24px; border-radius: 6px; border: 1px solid #e5e5e0; text-align: center; transition: all 0.2s; display: block; }
-  .hm-reno-card:hover { background: #111; }
-  .hm-reno-card:hover h4, .hm-reno-card:hover p { color: #fff; }
-  .hm-reno-card h4 { font-size: 16px; font-weight: 600; margin: 0 0 4px 0; color: #111; }
-  .hm-reno-card p { font-size: 13px; color: #666; margin: 0; }
+    .hm-hero { background: #EAEAEE; padding: 96px 24px 80px 24px; }
+    .hm-hero-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .hm-hero-image { width: 100%; aspect-ratio: 4 / 5; background-size: cover; background-position: center; border-radius: 4px; }
+    .hm-hero h1 { font-size: clamp(40px, 5vw, 72px); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin: 0 0 24px 0; color: #111; }
+    .hm-hero p { font-size: 18px; color: #444; margin: 0 0 32px 0; max-width: 480px; line-height: 1.5; }
+    .hm-hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hm-btn-primary { background: #111; color: #fff !important; padding: 14px 28px; border-radius: 6px; font-size: 16px; font-weight: 500; display: inline-block; transition: background 0.2s; }
+    .hm-btn-primary:hover { background: #333; }
+    .hm-btn-secondary { background: transparent; color: #111 !important; padding: 14px 28px; border-radius: 6px; font-size: 16px; font-weight: 500; border: 1px solid #111; display: inline-block; transition: all 0.2s; }
+    .hm-btn-secondary:hover { background: #111; color: #fff !important; }
 
-  /* ===== ABOUT ===== */
-  .hm-about { background: #fff; padding: 96px 24px; }
-  .hm-about-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; }
-  .hm-about-text h2 { font-size: clamp(36px, 4vw, 56px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 24px 0; color: #111; }
-  .hm-about-text p { font-size: 17px; color: #444; margin: 0 0 20px 0; line-height: 1.6; }
-  .hm-about-image { width: 100%; aspect-ratio: 1 / 1; background-size: cover; background-position: center; border-radius: 4px; }
+    .hm-trust { background: #111; color: #fff; padding: 48px 24px; }
+    .hm-trust-grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center; }
+    .hm-trust-item h3 { font-size: 36px; font-weight: 700; margin: 0 0 8px 0; letter-spacing: -0.02em; color: #fff; }
+    .hm-trust-item p { font-size: 14px; color: #aaa; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; }
 
-  /* ===== TESTIMONIALS ===== */
-  .hm-testimonials { background: #a8c1d9; color: #111; padding: 96px 24px; }
-  .hm-testimonials-inner { max-width: 1280px; margin: 0 auto; }
-  .hm-testimonials .hm-label { color: #2a3a4a; }
-  .hm-testimonials h2 { font-size: clamp(36px, 4vw, 56px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 64px 0; color: #111; }
-  .hm-testimonial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-  .hm-testimonial-grid-flip { margin-top: 64px; }
-  .hm-testimonial-quote { font-size: 22px; line-height: 1.5; margin: 0 0 24px 0; font-weight: 500; color: #111; }
-  .hm-testimonial-author { font-size: 15px; color: #2a3a4a; margin: 0; }
-  .hm-testimonial-image { width: 100%; aspect-ratio: 1 / 1; background-size: cover; background-position: center; border-radius: 4px; }
+    .hm-services { padding: 96px 24px; background: #f5f5f3; }
+    .hm-services-inner { max-width: 1280px; margin: 0 auto; }
+    .hm-label { font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; color: #666; margin-bottom: 16px; font-weight: 500; }
+    .hm-services h2 { font-size: clamp(36px, 4vw, 56px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 64px 0; max-width: 720px; color: #111; }
+    .hm-services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .hm-service-card { background: #fff; padding: 40px; border-radius: 8px; transition: transform 0.2s, box-shadow 0.2s; border: 1px solid #e5e5e0; display: block; }
+    .hm-service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+    .hm-service-card-image { width: 100%; aspect-ratio: 16 / 9; background-size: cover; background-position: center; border-radius: 4px; margin-bottom: 24px; }
+    .hm-service-card h3 { font-size: 28px; font-weight: 700; margin: 0 0 12px 0; letter-spacing: -0.02em; color: #111; }
+    .hm-service-card p { color: #555; margin: 0 0 24px 0; line-height: 1.5; }
+    .hm-service-card-link { font-weight: 500; border-bottom: 1px solid #111; padding-bottom: 2px; color: #111; }
 
-  /* ===== CTA ===== */
-  .hm-cta { background: #111; color: #fff; text-align: center; padding: 120px 24px; }
-  .hm-cta h2 { font-size: clamp(40px, 5vw, 64px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 0 auto 24px auto; max-width: 800px; color: #fff; }
-  .hm-cta p { font-size: 18px; color: #aaa; margin: 0 auto 40px auto; max-width: 600px; line-height: 1.5; }
-  .hm-cta-btn { background: #fff; color: #111 !important; padding: 14px 28px; border-radius: 6px; font-size: 16px; font-weight: 500; display: inline-block; transition: background 0.2s; }
-  .hm-cta-btn:hover { background: #ddd; }
+    .hm-reno-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+    .hm-reno-card { background: #fff; padding: 24px; border-radius: 6px; border: 1px solid #e5e5e0; text-align: center; transition: all 0.2s; display: block; }
+    .hm-reno-card:hover { background: #111; }
+    .hm-reno-card:hover h4, .hm-reno-card:hover p { color: #fff; }
+    .hm-reno-card h4 { font-size: 16px; font-weight: 600; margin: 0 0 4px 0; color: #111; }
+    .hm-reno-card p { font-size: 13px; color: #666; margin: 0; }
 
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 900px) {
-    .hm-hero { padding: 64px 24px 56px 24px; }
-    .hm-services, .hm-about, .hm-testimonials { padding: 64px 24px; }
-    .hm-cta { padding: 80px 24px; }
-    .hm-hero-inner, .hm-about-inner, .hm-testimonial-grid { grid-template-columns: 1fr; gap: 40px; }
-    .hm-services-grid { grid-template-columns: 1fr; }
-    .hm-reno-grid { grid-template-columns: 1fr; }
-    .hm-trust-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
-    .hm-testimonial-grid-flip { display: flex; flex-direction: column-reverse; gap: 32px; margin-top: 48px; }
-  }
-  @media (max-width: 480px) {
-    .hm-trust-grid { grid-template-columns: 1fr; }
-  }
-</style>
+    .hm-about { background: #fff; padding: 96px 24px; }
+    .hm-about-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; }
+    .hm-about-text h2 { font-size: clamp(36px, 4vw, 56px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 24px 0; color: #111; }
+    .hm-about-text p { font-size: 17px; color: #444; margin: 0 0 20px 0; line-height: 1.6; }
+    .hm-about-image { width: 100%; aspect-ratio: 1 / 1; background-size: cover; background-position: center; border-radius: 4px; }
 
-<div class="hm-page">
+    .hm-testimonials { background: #a8c1d9; color: #111; padding: 96px 24px; }
+    .hm-testimonials-inner { max-width: 1280px; margin: 0 auto; }
+    .hm-testimonials .hm-label { color: #2a3a4a; }
+    .hm-testimonials h2 { font-size: clamp(36px, 4vw, 56px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 64px 0; color: #111; }
+    .hm-testimonial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .hm-testimonial-grid-flip { margin-top: 64px; }
+    .hm-testimonial-quote { font-size: 22px; line-height: 1.5; margin: 0 0 24px 0; font-weight: 500; color: #111; }
+    .hm-testimonial-author { font-size: 15px; color: #2a3a4a; margin: 0; }
+    .hm-testimonial-image { width: 100%; aspect-ratio: 1 / 1; background-size: cover; background-position: center; border-radius: 4px; }
 
-  <!-- HERO -->
-  <section class="hm-hero">
-    <div class="hm-hero-inner">
-      <div class="hm-hero-image" style="background-image: url('https://raw.githubusercontent.com/FunctionFury/2266446_ALBERTA_LTD/main/home-hero.jpeg');">
-      </div>
-      <div>
-        <h1>Reliable, Precision-Driven Construction You Can Count On.</h1>
-        <p>Alberta-based general contractor specializing in leasehold improvements and full-scope renovations. Licensed, insured, and committed to finishing on time.</p>
-        <div class="hm-hero-buttons">
-          <a href="/contact" class="hm-btn-primary">Get a Free Quote</a>
-          <a href="/services" class="hm-btn-secondary">View Services</a>
-        </div>
-      </div>
+    .hm-cta { background: #111; color: #fff; text-align: center; padding: 120px 24px; }
+    .hm-cta h2 { font-size: clamp(40px, 5vw, 64px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 0 auto 24px auto; max-width: 800px; color: #fff; }
+    .hm-cta p { font-size: 18px; color: #aaa; margin: 0 auto 40px auto; max-width: 600px; line-height: 1.5; }
+    .hm-cta-btn { background: #fff; color: #111 !important; padding: 14px 28px; border-radius: 6px; font-size: 16px; font-weight: 500; display: inline-block; transition: background 0.2s; }
+    .hm-cta-btn:hover { background: #ddd; }
+
+    /* ===== FOOTER ===== */
+    .site-footer { background: #0a0a0a; color: #fff; padding: 80px 24px 32px 24px; }
+    .footer-inner { max-width: 1280px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 64px; }
+    .footer-col h4 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 20px 0; color: #888; font-weight: 600; }
+    .footer-col ul { list-style: none; padding: 0; margin: 0; }
+    .footer-col ul li { margin-bottom: 12px; color: #ccc; font-size: 15px; }
+    .footer-col ul li a { color: #ccc; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: #fff; }
+    .footer-newsletter h3 { font-size: 24px; font-weight: 700; margin: 0 0 12px 0; color: #fff; }
+    .footer-newsletter p { color: #aaa; margin: 0 0 20px 0; line-height: 1.5; }
+    .footer-form { display: flex; gap: 8px; max-width: 380px; }
+    .footer-form input { flex: 1; padding: 12px 16px; border: none; border-radius: 6px; font-size: 15px; background: #fff; color: #111; }
+    .footer-form button { background: #a8c1d9; color: #111; border: none; padding: 12px 24px; border-radius: 6px; font-weight: 500; cursor: pointer; font-size: 15px; }
+    .footer-bottom { border-top: 1px solid #222; padding-top: 32px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; color: #777; font-size: 14px; }
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social-icon { width: 36px; height: 36px; background: #222; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff !important; font-size: 14px; text-decoration: none; }
+    .footer-social-icon:hover { background: #333; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .hm-hero { padding: 64px 24px 56px 24px; }
+      .hm-services, .hm-about, .hm-testimonials { padding: 64px 24px; }
+      .hm-cta { padding: 80px 24px; }
+      .hm-hero-inner, .hm-about-inner, .hm-testimonial-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hm-services-grid { grid-template-columns: 1fr; }
+      .hm-reno-grid { grid-template-columns: 1fr; }
+      .hm-trust-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+      .hm-testimonial-grid-flip { display: flex; flex-direction: column-reverse; gap: 32px; margin-top: 48px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .footer-newsletter { grid-column: 1 / -1; }
+
+      /* Mobile nav */
+      .menu-toggle { display: block; }
+      .site-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #EAEAEE; flex-direction: column; padding: 24px; gap: 20px; border-bottom: 1px solid #d4d4d8; }
+      #menu-checkbox:checked ~ .site-nav { display: flex; }
+      .header-inner { position: relative; }
+    }
+    @media (max-width: 480px) {
+      .hm-trust-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">2266446 ALBERTA LTD</a>
+      <input type="checkbox" id="menu-checkbox">
+      <label for="menu-checkbox" class="menu-toggle"><span></span><span></span><span></span></label>
+      <nav class="site-nav">
+        <a href="services.html">Services</a>
+        <a href="projects.html">Past Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="nav-cta">Get a Quote</a>
+      </nav>
     </div>
-  </section>
+  </header>
 
-  <!-- TRUST STRIP -->
-  <section class="hm-trust">
-    <div class="hm-trust-grid">
-      <div class="hm-trust-item">
-        <h3>15+</h3>
-        <p>Years Experience</p>
-      </div>
-      <div class="hm-trust-item">
-        <h3>200+</h3>
-        <p>Projects Delivered</p>
-      </div>
-      <div class="hm-trust-item">
-        <h3>100%</h3>
-        <p>Licensed &amp; Insured</p>
-      </div>
-      <div class="hm-trust-item">
-        <h3>5★</h3>
-        <p>Client Satisfaction</p>
-      </div>
-    </div>
-  </section>
+  <!-- ========== HOMEPAGE CONTENT ========== -->
+  <div class="hm-page">
 
-  <!-- SERVICES -->
-  <section class="hm-services">
-    <div class="hm-services-inner">
-      <div class="hm-label">What We Do</div>
-      <h2>Two specialties. One standard of craftsmanship.</h2>
-
-      <div class="hm-services-grid">
-        <a href="/services" class="hm-service-card">
-          <div class="hm-service-card-image" style="background-image: url('https://raw.githubusercontent.com/FunctionFury/2266446_ALBERTA_LTD/main/home-leasehold.jpeg');">
-          </div>
-          <h3>Leasehold Improvements</h3>
-          <p>Office build-outs, retail fit-ups, and commercial space transformations. We work with landlords, tenants, and property managers to deliver code-compliant spaces on schedule.</p>
-          <span class="hm-service-card-link">Learn More →</span>
-        </a>
-        <a href="/services" class="hm-service-card">
-          <div class="hm-service-card-image" style="background-image: url('https://raw.githubusercontent.com/FunctionFury/2266446_ALBERTA_LTD/main/home_service.jpeg');">
-          </div>
-          <h3>Home Renovations</h3>
-          <p>Full-scope residential renovations from single-room remodels to multi-room transformations. Permits, design coordination, and trade management — all handled.</p>
-          <span class="hm-service-card-link">Learn More →</span>
-        </a>
-      </div>
-
-      <div class="hm-reno-grid">
-        <a href="/services" class="hm-reno-card">
-          <h4>Bathroom</h4>
-          <p>Full remodels &amp; refreshes</p>
-        </a>
-        <a href="/services" class="hm-reno-card">
-          <h4>Kitchen</h4>
-          <p>Custom &amp; modern designs</p>
-        </a>
-        <a href="/services" class="hm-reno-card">
-          <h4>Basement</h4>
-          <p>Suites, dev &amp; finishing</p>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="hm-about">
-    <div class="hm-about-inner">
-      <div class="hm-about-text">
-        <div class="hm-label">About Us</div>
-        <h2>Built on trust. Finished with care.</h2>
-        <p>We are a team of licensed builders, project managers, and maintenance specialists dedicated to delivering safe, durable, and visually striking spaces across Alberta.</p>
-        <p>By blending traditional craftsmanship with modern project management, we streamline every phase — planning, execution, and upkeep — so clients enjoy a smooth, transparent experience from contract to keys.</p>
-        <a href="/about" class="hm-btn-secondary">More About Us</a>
-      </div>
-      <div class="hm-about-image" style="background-image: url('https://raw.githubusercontent.com/FunctionFury/2266446_ALBERTA_LTD/main/home-team.jpeg');">
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="hm-testimonials">
-    <div class="hm-testimonials-inner">
-      <div class="hm-label">Client Stories</div>
-      <h2>What our clients say.</h2>
-
-      <div class="hm-testimonial-grid">
+    <!-- HERO -->
+    <section class="hm-hero">
+      <div class="hm-hero-inner">
+        <div class="hm-hero-image" style="background-image: url('https://raw.githubusercontent.com/FunctionFury/2266446_ALBERTA_LTD/main/home-hero.jpeg');"></div>
         <div>
-          <p class="hm-testimonial-quote">"The crew finished our office renovation ahead of schedule and under budget — truly exceptional workmanship."</p>
-          <p class="hm-testimonial-author">— Commercial Tenant, Calgary</p>
-        </div>
-        <div class="hm-testimonial-image" style="background-image: url('https://raw.githubusercontent.com/FunctionFury/2266446_ALBERTA_LTD/main/home-testimonial-1.jpeg');">
+          <h1>Reliable, Precision-Driven Construction You Can Count On.</h1>
+          <p>Alberta-based general contractor specializing in leasehold improvements and full-scope renovations. Licensed, insured, and committed to finishing on time.</p>
+          <div class="hm-hero-buttons">
+            <a href="contact.html" class="hm-btn-primary">Get a Free Quote</a>
+            <a href="services.html" class="hm-btn-secondary">View Services</a>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="hm-testimonial-grid hm-testimonial-grid-flip">
-        <div class="hm-testimonial-image" style="background-image: url('https://raw.githubusercontent.com/FunctionFury/2266446_ALBERTA_LTD/main/home-testimonial-2.jpeg');">
+    <!-- TRUST STRIP -->
+    <section class="hm-trust">
+      <div class="hm-trust-grid">
+        <div class="hm-trust-item"><h3>15+</h3><p>Years Experience</p></div>
+        <div class="hm-trust-item"><h3>200+</h3><p>Projects Delivered</p></div>
+        <div class="hm-trust-item"><h3>100%</h3><p>Licensed &amp; Insured</p></div>
+        <div class="hm-trust-item"><h3>5★</h3><p>Client Satisfaction</p></div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="hm-services">
+      <div class="hm-services-inner">
+        <div class="hm-label">What We Do</div>
+        <h2>Two specialties. One standard of craftsmanship.</h2>
+
+        <div class="hm-services-grid">
+          <a href="services.html" class="hm-service-card">
+            <div class="hm-service-card-image" style="background-image: url('https://raw.githubusercontent.com/FunctionFury/2266446_ALBERTA_LTD/main/home-leasehold.jpeg');"></div>
+            <h3>Leasehold Improvements</h3>
+            <p>Office build-outs, retail fit-ups, and commercial space transformations. We work with landlords, tenants, and property managers to deliver code-compliant spaces on schedule.</p>
+            <span class="hm-service-card-link">Learn More →</span>
+          </a>
+          <a href="services.html" class="hm-service-card">
+            <div class="hm-service-card-image" style="background-image: url('https://raw.githubusercontent.com/FunctionFury/2266446_ALBERTA_LTD/main/home_service.jpeg');"></div>
+            <h3>Home Renovations</h3>
+            <p>Full-scope residential renovations from single-room remodels to multi-room transformations. Permits, design coordination, and trade management — all handled.</p>
+            <span class="hm-service-card-link">Learn More →</span>
+          </a>
         </div>
-        <div>
-          <p class="hm-testimonial-quote">"Their maintenance plan has saved us countless hours and expenses. We finally have peace of mind."</p>
-          <p class="hm-testimonial-author">— Property Manager, Edmonton</p>
+
+        <div class="hm-reno-grid">
+          <a href="services.html" class="hm-reno-card">
+            <h4>Bathroom</h4>
+            <p>Full remodels &amp; refreshes</p>
+          </a>
+          <a href="services.html" class="hm-reno-card">
+            <h4>Kitchen</h4>
+            <p>Custom &amp; modern designs</p>
+          </a>
+          <a href="services.html" class="hm-reno-card">
+            <h4>Basement</h4>
+            <p>Suites, dev &amp; finishing</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="hm-about">
+      <div class="hm-about-inner">
+        <div class="hm-about-text">
+          <div class="hm-label">About Us</div>
+          <h2>Built on trust. Finished with care.</h2>
+          <p>We are a team of licensed builders, project managers, and maintenance specialists dedicated to delivering safe, durable, and visually striking spaces across Alberta.</p>
+          <p>By blending traditional craftsmanship with modern project management, we streamline every phase — planning, execution, and upkeep — so clients enjoy a smooth, transparent experience from contract to keys.</p>
+          <a href="about.html" class="hm-btn-secondary">More About Us</a>
+        </div>
+        <div class="hm-about-image" style="background-image: url('https://raw.githubusercontent.com/FunctionFury/2266446_ALBERTA_LTD/main/home-team.jpeg');"></div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="hm-testimonials">
+      <div class="hm-testimonials-inner">
+        <div class="hm-label">Client Stories</div>
+        <h2>What our clients say.</h2>
+
+        <div class="hm-testimonial-grid">
+          <div>
+            <p class="hm-testimonial-quote">"The crew finished our office renovation ahead of schedule and under budget — truly exceptional workmanship."</p>
+            <p class="hm-testimonial-author">— Commercial Tenant, Calgary</p>
+          </div>
+          <div class="hm-testimonial-image" style="background-image: url('https://raw.githubusercontent.com/FunctionFury/2266446_ALBERTA_LTD/main/home-testimonial-1.jpeg');"></div>
+        </div>
+
+        <div class="hm-testimonial-grid hm-testimonial-grid-flip">
+          <div class="hm-testimonial-image" style="background-image: url('https://raw.githubusercontent.com/FunctionFury/2266446_ALBERTA_LTD/main/home-testimonial-2.jpeg');"></div>
+          <div>
+            <p class="hm-testimonial-quote">"Their maintenance plan has saved us countless hours and expenses. We finally have peace of mind."</p>
+            <p class="hm-testimonial-author">— Property Manager, Edmonton</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="hm-cta">
+      <h2>Ready to start your next project?</h2>
+      <p>Free, no-obligation quotes. Most replies within 24 hours.</p>
+      <a href="contact.html" class="hm-cta-btn">Request Your Quote</a>
+    </section>
+
+  </div>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-newsletter">
+          <h3>Join Our Mailing List</h3>
+          <p>Project tips, seasonal offers, and updates from our crew — straight to your inbox.</p>
+          <div class="footer-form">
+            <input type="email" placeholder="Email Address">
+            <button>Sign Up</button>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="projects.html">Past Projects</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li>info@example.com</li>
+            <li>(403) 000-0000</li>
+            <li>Alberta, Canada</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2026 2266446 Alberta Ltd. All rights reserved.</div>
+        <div class="footer-social">
+          <a href="#" class="footer-social-icon">f</a>
+          <a href="#" class="footer-social-icon">in</a>
+          <a href="#" class="footer-social-icon">ig</a>
         </div>
       </div>
     </div>
-  </section>
+  </footer>
 
-  <!-- CTA -->
-  <section class="hm-cta">
-    <h2>Ready to start your next project?</h2>
-    <p>Free, no-obligation quotes. Most replies within 24 hours.</p>
-    <a href="/contact" class="hm-cta-btn">Request Your Quote</a>
-  </section>
-
-</div>
+</body>
+</html>
